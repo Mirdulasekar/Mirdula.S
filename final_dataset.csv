@@ -1,0 +1,11 @@
+user_id,product,price,platform,category,income,expense,label
+1,Rice,60,Amazon,Food,15000,200,Affordable
+2,Shoes,2000,Flipkart,Fashion,20000,1800,Not Affordable
+3,Milk,50,Local,Food,12000,100,Affordable
+4,Phone,15000,Amazon,Electronics,25000,14000,Not Affordable
+5,Laptop,55000,Flipkart,Electronics,40000,30000,Not Affordable
+6,Shirt,800,Amazon,Fashion,18000,1200,Affordable
+7,Vegetables,120,Local,Food,10000,300,Affordable
+8,Headphones,2500,Flipkart,Electronics,22000,2000,Affordable
+9,Book,300,Amazon,Education,16000,500,Affordable
+10,Watch,2000,Flipkart,Accessories,21000,1500,Not Affordable
