@@ -1,111 +1,53 @@
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+const apiKey = "8772602240b088f35736c769e96a9e9d";
 
-const input = document.getElementById("taskInput");
-const list = document.getElementById("taskList");
+async function getWeather() {
 
-function saveTasks(){
-localStorage.setItem("tasks",JSON.stringify(tasks));
+    const city = document.getElementById("city").value.trim();
+    const result = document.getElementById("weatherResult");
+
+    if (city === "") {
+        result.innerHTML = "<p style='color:red;'>Please enter a city name.</p>";
+        return;
+    }
+
+    result.innerHTML = "<p>Loading...</p>";
+
+    try {
+
+        const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric`
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || "Unable to fetch weather data.");
+        }
+
+        result.innerHTML = `
+            <h2>${data.name}, ${data.sys.country}</h2>
+
+            <p>🌡 <strong>Temperature:</strong> ${data.main.temp} °C</p>
+
+            <p>🤒 <strong>Feels Like:</strong> ${data.main.feels_like} °C</p>
+
+            <p>💧 <strong>Humidity:</strong> ${data.main.humidity}%</p>
+
+            <p>💨 <strong>Wind Speed:</strong> ${data.wind.speed} m/s</p>
+
+            <p>☁ <strong>Weather:</strong> ${data.weather[0].description}</p>
+
+            <p>🌍 <strong>Pressure:</strong> ${data.main.pressure} hPa</p>
+        `;
+
+    } catch (error) {
+
+        result.innerHTML = `
+            <p style="color:red; font-weight:bold;">
+                Error: ${error.message}
+            </p>
+        `;
+
+        console.error(error);
+    }
 }
-
-function displayTasks(filter="all"){
-
-list.innerHTML="";
-
-tasks.forEach((task,index)=>{
-
-if(filter==="active" && task.completed) return;
-if(filter==="completed" && !task.completed) return;
-
-const li=document.createElement("li");
-
-if(task.completed){
-li.classList.add("completed");
-}
-
-li.innerHTML=`
-
-<span>${task.text}</span>
-
-<div>
-
-<button onclick="toggleTask(${index})">✔</button>
-
-<button onclick="editTask(${index})">Edit</button>
-
-<button onclick="deleteTask(${index})">Delete</button>
-
-</div>
-
-`;
-
-list.appendChild(li);
-
-});
-
-}
-
-document.getElementById("addBtn").addEventListener("click",()=>{
-
-const text=input.value.trim();
-
-if(text==="") return;
-
-tasks.push({
-
-text:text,
-
-completed:false
-
-});
-
-saveTasks();
-
-displayTasks();
-
-input.value="";
-
-});
-
-function toggleTask(index){
-
-tasks[index].completed=!tasks[index].completed;
-
-saveTasks();
-
-displayTasks();
-
-}
-
-function deleteTask(index){
-
-tasks.splice(index,1);
-
-saveTasks();
-
-displayTasks();
-
-}
-
-function editTask(index){
-
-let newTask=prompt("Edit Task",tasks[index].text);
-
-if(newTask!==null && newTask.trim()!==""){
-
-tasks[index].text=newTask;
-
-saveTasks();
-
-displayTasks();
-
-}
-
-}
-
-function filterTasks(type){
-
-displayTasks(type);
-
-}
-
-displayTasks();
