@@ -1,65 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Portfolio of Mirdula Sekar, Computer Science Engineering Student.">
-<meta name="keywords" content="Portfolio, HTML, Web Developer, Student">
-<meta name="author" content="Mirdula Sekar">
-<title>Home | Mirdula Sekar</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>My Portfolio</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-<h1>Mirdula Sekar</h1>
-<p>Computer Science Engineering Student</p>
 
-<nav aria-label="Main Navigation">
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="projects.html">Projects</a></li>
-<li><a href="contact.html">Contact</a></li>
-</ul>
+<h2>My Portfolio</h2>
+
+<nav>
+
+<a href="#">Home</a>
+<a href="#">About</a>
+<a href="#">Skills</a>
+<a href="#">Projects</a>
+<a href="#">Contact</a>
+
 </nav>
+
+<button id="themeBtn">🌙</button>
 
 </header>
 
-<main>
+<section class="hero">
 
-<section>
+<div class="hero-text">
 
-<h2>Welcome</h2>
+<h1>Hello, I'm Sekar</h1>
 
 <p>
-Hello! I am Mirdula Sekar, a Computer Science Engineering student passionate about web development, Java, Python, AI, and problem solving.
+Web Developer | Frontend Designer | Student
 </p>
+
+<button>Hire Me</button>
+
+</div>
+
+<div class="hero-image">
+
+<img src="https://via.placeholder.com/300"
+alt="Profile">
+
+</div>
 
 </section>
 
-<section>
+<section class="skills">
 
 <h2>Skills</h2>
 
-<ul>
-<li>HTML5</li>
-<li>CSS3</li>
-<li>Java</li>
-<li>Python</li>
-<li>C Programming</li>
-</ul>
+<div class="skill-container">
+
+<div class="card">
+HTML5
+</div>
+
+<div class="card">
+CSS3
+</div>
+
+<div class="card">
+JavaScript
+</div>
+
+<div class="card">
+React
+</div>
+
+<div class="card">
+NodeJS
+</div>
+
+<div class="card">
+MongoDB
+</div>
+
+</div>
 
 </section>
 
-</main>
+<section class="projects">
+
+<h2>Projects</h2>
+
+<div class="project-grid">
+
+<div class="project">
+<h3>Portfolio Website</h3>
+<p>Responsive personal website.</p>
+</div>
+
+<div class="project">
+<h3>Weather App</h3>
+<p>API based Weather Dashboard.</p>
+</div>
+
+<div class="project">
+<h3>Todo App</h3>
+<p>CRUD Application.</p>
+</div>
+
+<div class="project">
+<h3>E-Commerce</h3>
+<p>Shopping Website.</p>
+</div>
+
+</div>
+
+</section>
 
 <footer>
 
-<p>&copy; 2026 Mirdula Sekar</p>
+<p>
+©2026 Sekar
+</p>
 
 </footer>
 
+<script src="script.js"></script>
+
 </body>
+
 </html>
